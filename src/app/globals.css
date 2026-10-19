@@ -1,26 +1,133 @@
 @import "tailwindcss";
 
+/*
+ * Colour roles
+ *   --navy / --navy-deep  filled navy surfaces (buttons, hero card, contact band, footer); text on them is --text-on-navy
+ *   --heading             navy-ish foreground (headings, links, icons) — turns light in dark mode
+ *   --accent              brighter blue for progress indicators (scroll bar, experience timeline)
+ *   --star                rating stars
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --bg: #ffffff;
+  --bg-alt: #f5f7fa;
+  --navy: #1b2a47;
+  --navy-deep: #0f1b33;
+  --heading: #1b2a47;
+  --text: #141c2e;
+  --text-muted: #4a5568;
+  --text-on-navy: #ffffff;
+  --line: #e2e7ef;
+  --accent: #2563eb;
+  --star: #f5b301;
+  --shadow: rgba(15, 27, 51, 0.35);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Dark palette: applied when the user picks "dark", or picks "system" (no attribute) and the OS is dark. */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0b1220;
+    --bg-alt: #111a2c;
+    --navy: #1e3561;
+    --navy-deep: #060b16;
+    --heading: #d3def4;
+    --text: #dbe2ee;
+    --text-muted: #9ba8bd;
+    --text-on-navy: #ffffff;
+    --line: #233049;
+    --accent: #60a5fa;
+    --star: #fbbf24;
+    --shadow: rgba(0, 0, 0, 0.6);
   }
 }
 
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b1220;
+  --bg-alt: #111a2c;
+  --navy: #1e3561;
+  --navy-deep: #060b16;
+  --heading: #d3def4;
+  --text: #dbe2ee;
+  --text-muted: #9ba8bd;
+  --text-on-navy: #ffffff;
+  --line: #233049;
+  --accent: #60a5fa;
+  --star: #fbbf24;
+  --shadow: rgba(0, 0, 0, 0.6);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-heading: var(--heading);
+  --color-accent: var(--accent);
+  --color-star: var(--star);
+  --color-ink: var(--text);
+  --color-muted: var(--text-muted);
+  --color-on-navy: var(--text-on-navy);
+  --color-line: var(--line);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-grotesk);
+
+  --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
+  --animate-marquee-reverse: marquee var(--marquee-duration, 40s) linear infinite reverse;
+  --animate-caret: caret 1s steps(1) infinite;
+
+  /* Content is rendered twice; shifting by half (plus half the gap) loops seamlessly. */
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-50% - var(--marquee-gap, 0px) / 2));
+    }
+  }
+
+  @keyframes caret {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--navy);
+  color: var(--text-on-navy);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-marquee,
+  .animate-marquee-reverse,
+  .animate-caret {
+    animation: none;
+  }
 }
