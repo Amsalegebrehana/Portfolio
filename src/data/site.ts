@@ -61,7 +61,8 @@ export const site = {
 };
 
 // Section headings (the small label comes from navItems).
-export const sectionCopy = {
+// Comment out a line to drop that section's big heading; the small label stays.
+export const sectionCopy: Partial<Record<(typeof navItems)[number]["id"], string>> = {
   about: "Reliable systems, from the database to the dashboard.",
   // skills: "The tools I reach for.",
   projects: "Things I’ve built on my own time.",
