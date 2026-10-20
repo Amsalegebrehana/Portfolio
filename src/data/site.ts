@@ -16,9 +16,9 @@ export const site = {
   // TODO: add a headshot to /public and set the path here (e.g. "/amsale.jpg") to show it in the hero.
   photo: undefined as string | undefined,
 
-  headline: "I build backend services, data pipelines and full-stack products that hold up in production.",
+  headline: "I build Full-Stack applications, backend services, reporting dashboards, and data pipelines that hold up in production.",
   summary:
-    "Software Engineer with 3 years of experience building backend services, APIs, data pipelines, and full-stack applications using Python, FastAPI, React, TypeScript, Node.js, Express.js, PostgreSQL, and Docker. Experienced in data-intensive systems, automation, and testing with a focus on building reliable and scalable software.",
+    "Software Engineer with 3 years of experience building full-stack services, APIs, data pipelines. Experienced in data-intensive systems, automation, and testing with a focus on building reliable and scalable software.",
 
   description:
     "Amsale Gebrehana is a London-based Software Engineer building backend services, APIs, data pipelines and full-stack applications with Python, FastAPI, React, TypeScript, Node.js and PostgreSQL.",
@@ -63,9 +63,9 @@ export const site = {
 // Section headings (the small label comes from navItems).
 export const sectionCopy = {
   about: "Reliable systems, from the database to the dashboard.",
-  skills: "The tools I reach for.",
+  // skills: "The tools I reach for.",
   projects: "Things I’ve built on my own time.",
-  experience: "Where I’ve shipped.",
+  experience: "Professional experience.",
   testimonials: "What clients say.",
   contact: "Let’s work together.",
 };
@@ -73,8 +73,8 @@ export const sectionCopy = {
 export const navItems = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
-  { id: "projects", label: "Projects" },
   { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
   { id: "testimonials", label: "Testimonials" },
   { id: "contact", label: "Contact" },
 ] as const;

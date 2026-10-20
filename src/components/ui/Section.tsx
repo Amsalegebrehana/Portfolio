@@ -6,6 +6,8 @@ type SectionProps = {
   title: string;
   intro: string;
   tone?: "light" | "alt" | "navy";
+  /** Wider container (1280px instead of 1100px) for content with long lines. */
+  wide?: boolean;
   children: React.ReactNode;
 };
 
@@ -15,11 +17,11 @@ const tones = {
   navy: "bg-navy text-on-navy",
 };
 
-export function Section({ id, index, title, intro, tone = "light", children }: SectionProps) {
+export function Section({ id, index, title, intro, tone = "light", wide = false, children }: SectionProps) {
   const onNavy = tone === "navy";
   return (
     <section id={id} aria-labelledby={`${id}-title`} className={`${tones[tone]} py-20 sm:py-28`}>
-      <div className="mx-auto max-w-275 px-5 sm:px-8">
+      <div className={`mx-auto px-5 sm:px-8 ${wide ? "max-w-320" : "max-w-275"}`}>
         <Reveal className="mb-12 sm:mb-16">
           <p
             className={`font-display text-sm font-medium tracking-[0.2em] uppercase ${

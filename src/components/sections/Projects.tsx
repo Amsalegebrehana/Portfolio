@@ -9,7 +9,7 @@ import { sectionCopy } from "@/data/site";
 
 export function Projects() {
   return (
-    <Section id="projects" index="03" title="Projects" intro={sectionCopy.projects} tone="alt">
+    <Section id="projects" index="04" title="Projects" intro={sectionCopy.projects}>
       <ul className="grid gap-6 md:grid-cols-2">
         {projects.map((project, i) => (
           <Reveal as="li" key={project.title} delay={i * 0.08}>

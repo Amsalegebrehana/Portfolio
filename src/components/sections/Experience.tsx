@@ -36,7 +36,7 @@ export function Experience() {
   const fill = useSpring(scrollYProgress, { stiffness: 120, damping: 24, restDelta: 0.001 });
 
   return (
-    <Section id="experience" index="04" title="Experience" intro={sectionCopy.experience}>
+    <Section id="experience" index="03" title="Experience" intro={sectionCopy.experience} tone="alt" wide>
       <div className="relative">
         <span aria-hidden="true" className={`absolute top-2 bottom-2 w-px bg-line ${trackX}`} />
         <motion.span
@@ -55,10 +55,10 @@ export function Experience() {
                   {role.title} <span className="text-muted">·</span> {role.company}
                   {role.type && <span className="ml-2 align-middle text-sm font-medium text-muted">({role.type})</span>}
                 </h3>
-                <ul className="mt-4 max-w-[65ch] space-y-3 leading-7 text-ink">
+                <ul className="mt-4 space-y-3 leading-7 text-ink">
                   {role.points.map((point) => (
                     <li key={point} className="flex gap-3">
-                      <span aria-hidden="true" className="mt-3 h-1 w-3 shrink-0 bg-heading/40" />
+                      <span aria-hidden="true" className="mt-2.75 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                       {point}
                     </li>
                   ))}
